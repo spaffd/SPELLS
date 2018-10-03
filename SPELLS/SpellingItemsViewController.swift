@@ -12,9 +12,17 @@ class SpellingItemsViewController: UITableViewController {
 
     var itemArray = ["light", "floor", "key", "free"]
     
+   let defaults = UserDefaults.standard
+    
     override func viewDidLoad() {
         
         super.viewDidLoad()
+        
+        if let items = defaults.array(forKey: "SpellingListArray") as? [String] {
+            
+          itemArray = items
+            
+        }
         
     }
 
@@ -69,6 +77,8 @@ class SpellingItemsViewController: UITableViewController {
             //what will happen once the user clicks the Add Item button on our UIAlert
             
          self.itemArray.append(textField.text!)
+            
+            self.defaults.set(self.itemArray, forKey: "SpellingListArray")
             
             self.tableView.reloadData()
             
