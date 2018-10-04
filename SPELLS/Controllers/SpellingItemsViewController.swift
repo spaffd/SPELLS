@@ -10,7 +10,7 @@ import UIKit
 
 class SpellingItemsViewController: UITableViewController {
 
-    var itemArray = ["light", "floor", "key", "free"]
+    var itemArray = [Item]()
     
    let defaults = UserDefaults.standard
     
@@ -18,11 +18,41 @@ class SpellingItemsViewController: UITableViewController {
         
         super.viewDidLoad()
         
-        if let items = defaults.array(forKey: "SpellingListArray") as? [String] {
+        let newItem1 = Item()
+        
+        newItem1.title = "light"
+        
+        itemArray.append(newItem1)
+        
+        let newItem2 = Item()
+        
+        newItem2.title = "floor"
+        
+        itemArray.append(newItem2)
+        
+        let newItem3 = Item()
+        
+        newItem3.title = "key"
+        
+        itemArray.append(newItem3)
+        
+        let newItem4 = Item()
+        
+        newItem4.title = "free"
+        
+        itemArray.append(newItem4)
+        
+        let newItem5 = Item()
+        
+        newItem5.title = "large"
+        
+        itemArray.append(newItem5)
+        
+        if let items = defaults.array(forKey: "SpellingListArray") as? [Item] {
             
-          itemArray = items
+         itemArray = items
             
-        }
+       }
         
     }
 
@@ -38,7 +68,13 @@ class SpellingItemsViewController: UITableViewController {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "SpellingItemCell", for: indexPath)
         
-        cell.textLabel?.text = itemArray[indexPath.row]
+        let item = itemArray[indexPath.row]
+        
+        cell.textLabel?.text = item.title
+        
+        //set up Ternary operator to replace if and else
+        
+        cell.accessoryType = item.done ? .checkmark : .none
         
         return cell
         
@@ -50,15 +86,9 @@ class SpellingItemsViewController: UITableViewController {
         
        // print(itemArray[indexPath.row])
         
-        if tableView.cellForRow(at: indexPath)?.accessoryType == .checkmark {
-            
-            tableView.cellForRow(at: indexPath)?.accessoryType = .none
-            
-        } else {
-            
-        tableView.cellForRow(at: indexPath)?.accessoryType = .checkmark
-            
-        }
+       itemArray[indexPath.row].done = !itemArray[indexPath.row].done
+        
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -76,7 +106,11 @@ class SpellingItemsViewController: UITableViewController {
             
             //what will happen once the user clicks the Add Item button on our UIAlert
             
-         self.itemArray.append(textField.text!)
+         let newItem = Item()
+            
+            newItem.title = textField.text!
+            
+            self.itemArray.append(newItem)
             
             self.defaults.set(self.itemArray, forKey: "SpellingListArray")
             
