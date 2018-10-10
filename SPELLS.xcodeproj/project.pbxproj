@@ -14,9 +14,11 @@
 		610602C22163DF86003DF4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610602C02163DF86003DF4C4 /* LaunchScreen.storyboard */; };
 		610903E1216B92AD0045AB1F /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610903E0216B92AD0045AB1F /* TopicViewController.swift */; };
 		61B1F3C221664A0800083D1A /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61B1F3C021664A0800083D1A /* DataModel.xcdatamodeld */; };
+		AE9299AD39493E930F5D599C /* Pods_SPELLS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		5BA89B6DCD5B1291C41FB933 /* Pods-SPELLS.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPELLS.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS.debug.xcconfig"; sourceTree = "<group>"; };
 		610602B42163DF81003DF4C4 /* SPELLS.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SPELLS.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		610602B72163DF81003DF4C4 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		610602B92163DF82003DF4C4 /* SpellingItemsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpellingItemsViewController.swift; sourceTree = "<group>"; };
@@ -26,6 +28,8 @@
 		610602C32163DF86003DF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		610903E0216B92AD0045AB1F /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		61B1F3C121664A0800083D1A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		A19BFCB823087274C389C859 /* Pods-SPELLS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPELLS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS.release.xcconfig"; sourceTree = "<group>"; };
+		B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPELLS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,17 +37,29 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE9299AD39493E930F5D599C /* Pods_SPELLS.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		214171787DD13DA5CAE37879 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5BA89B6DCD5B1291C41FB933 /* Pods-SPELLS.debug.xcconfig */,
+				A19BFCB823087274C389C859 /* Pods-SPELLS.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		610602AB2163DF81003DF4C4 = {
 			isa = PBXGroup;
 			children = (
 				610602B62163DF81003DF4C4 /* SPELLS */,
 				610602B52163DF81003DF4C4 /* Products */,
+				214171787DD13DA5CAE37879 /* Pods */,
+				A1FEDE8FE816E7E98DC266F3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -102,6 +118,14 @@
 			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		A1FEDE8FE816E7E98DC266F3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -109,9 +133,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 610602C62163DF86003DF4C4 /* Build configuration list for PBXNativeTarget "SPELLS" */;
 			buildPhases = (
+				1E18A75F105DA72A3BD8EC66 /* [CP] Check Pods Manifest.lock */,
 				610602B02163DF81003DF4C4 /* Sources */,
 				610602B12163DF81003DF4C4 /* Frameworks */,
 				610602B22163DF81003DF4C4 /* Resources */,
+				AF036BEC2787B3F708B23440 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -167,6 +193,55 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		1E18A75F105DA72A3BD8EC66 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SPELLS-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		AF036BEC2787B3F708B23440 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
+				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		610602B02163DF81003DF4C4 /* Sources */ = {
@@ -318,6 +393,7 @@
 		};
 		610602C72163DF86003DF4C4 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BA89B6DCD5B1291C41FB933 /* Pods-SPELLS.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
@@ -336,6 +412,7 @@
 		};
 		610602C82163DF86003DF4C4 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A19BFCB823087274C389C859 /* Pods-SPELLS.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
