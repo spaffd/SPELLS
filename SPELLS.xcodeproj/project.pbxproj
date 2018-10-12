@@ -13,7 +13,8 @@
 		610602BF2163DF86003DF4C4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 610602BE2163DF86003DF4C4 /* Assets.xcassets */; };
 		610602C22163DF86003DF4C4 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 610602C02163DF86003DF4C4 /* LaunchScreen.storyboard */; };
 		610903E1216B92AD0045AB1F /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610903E0216B92AD0045AB1F /* TopicViewController.swift */; };
-		61B1F3C221664A0800083D1A /* DataModel.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 61B1F3C021664A0800083D1A /* DataModel.xcdatamodeld */; };
+		6163DA7B216FAF0800B431E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163DA7A216FAF0800B431E1 /* Item.swift */; };
+		6163DA7D216FAF3200B431E1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163DA7C216FAF3200B431E1 /* Topic.swift */; };
 		AE9299AD39493E930F5D599C /* Pods_SPELLS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */; };
 /* End PBXBuildFile section */
 
@@ -27,7 +28,8 @@
 		610602C12163DF86003DF4C4 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		610602C32163DF86003DF4C4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		610903E0216B92AD0045AB1F /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
-		61B1F3C121664A0800083D1A /* DataModel.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = DataModel.xcdatamodel; sourceTree = "<group>"; };
+		6163DA7A216FAF0800B431E1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
+		6163DA7C216FAF3200B431E1 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
 		A19BFCB823087274C389C859 /* Pods-SPELLS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPELLS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS.release.xcconfig"; sourceTree = "<group>"; };
 		B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPELLS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -87,7 +89,8 @@
 		6192256A21651E4D00D6566A /* Data Model */ = {
 			isa = PBXGroup;
 			children = (
-				61B1F3C021664A0800083D1A /* DataModel.xcdatamodeld */,
+				6163DA7C216FAF3200B431E1 /* Topic.swift */,
+				6163DA7A216FAF0800B431E1 /* Item.swift */,
 			);
 			path = "Data Model";
 			sourceTree = "<group>";
@@ -200,15 +203,11 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
 				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"$(DERIVED_FILE_DIR)/Pods-SPELLS-checkManifestLockResult.txt",
 			);
@@ -222,16 +221,12 @@
 			buildActionMask = 2147483647;
 			files = (
 			);
-			inputFileListPaths = (
-			);
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/Realm/Realm.framework",
 				"${BUILT_PRODUCTS_DIR}/RealmSwift/RealmSwift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-			);
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Realm.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/RealmSwift.framework",
@@ -248,8 +243,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6163DA7B216FAF0800B431E1 /* Item.swift in Sources */,
+				6163DA7D216FAF3200B431E1 /* Topic.swift in Sources */,
 				610602BA2163DF82003DF4C4 /* SpellingItemsViewController.swift in Sources */,
-				61B1F3C221664A0800083D1A /* DataModel.xcdatamodeld in Sources */,
 				610903E1216B92AD0045AB1F /* TopicViewController.swift in Sources */,
 				610602B82163DF81003DF4C4 /* AppDelegate.swift in Sources */,
 			);
@@ -451,19 +447,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		61B1F3C021664A0800083D1A /* DataModel.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				61B1F3C121664A0800083D1A /* DataModel.xcdatamodel */,
-			);
-			currentVersion = 61B1F3C121664A0800083D1A /* DataModel.xcdatamodel */;
-			path = DataModel.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 610602AC2163DF81003DF4C4 /* Project object */;
 }

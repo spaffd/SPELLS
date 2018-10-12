@@ -7,15 +7,16 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 
 class TopicViewController: UITableViewController {
     
-    var topics = [Topic]()
+    let realm = try! Realm()
     
-    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var topics: Results<Topic>?
     
     override func viewDidLoad() {
+        
         super.viewDidLoad()
 
      loadTopics()
@@ -26,16 +27,15 @@ class TopicViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return topics.count
+        return topics?.count ?? 1
+        
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "TopicCell", for: indexPath)
         
-        let topic = topics[indexPath.row]
-        
-        cell.textLabel?.text = topic.name
+        cell.textLabel?.text = topics?[indexPath.row].name ?? "No Topics Added Yet"
         
         return cell
     
@@ -55,7 +55,7 @@ class TopicViewController: UITableViewController {
         
         if let indexPath = tableView.indexPathForSelectedRow {
             
-            destinationVC.selectedTopic = topics[indexPath.row]
+            destinationVC.selectedTopic = topics?[indexPath.row]
             
         }
         
@@ -64,15 +64,18 @@ class TopicViewController: UITableViewController {
     
     //:- Data Manipulation Methods
     
-   func saveTopics() {
+    func save(topic: Topic) {
         
         do{
             
-           try context.save()
+            try realm.write {
+                
+                realm.add(topic)
             
-       } catch {
+       }
+        }     catch {
     
-           print("Error saving context \(error)")
+           print("Error saving topic \(error)")
             
     }
         
@@ -82,19 +85,9 @@ tableView.reloadData()
     
   func loadTopics() {
     
-    let request : NSFetchRequest<Topic> = Topic.fetchRequest()
-        
-    do{
-            
-          topics = try context.fetch(request)
-            
-      } catch {
-            
-        print("Error fetching data from context \(error)")
-            
-       }
-        
-       tableView.reloadData()
+   topics = realm.objects(Topic.self)
+    
+     tableView.reloadData()
         
    }
     
@@ -108,13 +101,11 @@ tableView.reloadData()
         
         let action = UIAlertAction(title: "Add", style: .default) { (action) in
             
-            let newTopic = Topic(context: self.context)
+            let newTopic = Topic()
         
         newTopic.name = textField.text!
-        
-        self.topics.append(newTopic)
             
-            self.saveTopics()
+            self.save(topic: newTopic)
         
         }
         
