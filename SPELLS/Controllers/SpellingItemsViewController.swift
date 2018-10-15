@@ -67,13 +67,25 @@ class SpellingItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-     //context.delete(itemArray[indexPath.row])
+        if let item = spellingItems?[indexPath.row] {
+            
+            do {
+            
+            try realm.write {
+                
+                item.done = !item.done
+                
+            }
+                
+            } catch {
+                
+                print("Error saving done status, \(error)")
+                
+            }
+            
+        }
         
-      //  itemArray.remove(at: indexPath.row)
-        
-     //   spellingItems[indexPath.row].done = !spellingItems[indexPath.row].done
-        
-     //   saveItems()
+        tableView.reloadData()
         
         tableView.deselectRow(at: indexPath, animated: true)
         
@@ -100,6 +112,8 @@ class SpellingItemsViewController: UITableViewController {
                     let newItem = Item()
                     
                     newItem.title = textField.text!
+                        
+                        newItem.dateCreated = Date()
                     
                     currentTopic.items.append(newItem)
                     
@@ -133,8 +147,6 @@ class SpellingItemsViewController: UITableViewController {
     
     //MARK: - Model Manipulation Methods
     
-    
-    
     func loadItems() {
         
      spellingItems = selectedTopic?.items.sorted(byKeyPath: "title", ascending: true)
@@ -145,40 +157,36 @@ class SpellingItemsViewController: UITableViewController {
 }
 //MARK:- Search bar methods
 
-//extension SpellingItemsViewController: UISearchBarDelegate {
+extension SpellingItemsViewController: UISearchBarDelegate {
     
-//    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        
-//        let request : NSFetchRequest<Item> = Item.fetchRequest()
-        
-//        let predicate = NSPredicate(format: "title CONTAINS[cd] %@", searchBar.text!)
-        
-//        request.sortDescriptors = [NSSortDescriptor(key: "title", ascending: true)]
-        
-//        loadItems(with: request, predicate: predicate)
+   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     
-//    }
+    spellingItems = spellingItems?.filter("title CONTAINS[cd] %@", searchBar.text!).sorted(byKeyPath: "dateCreated", ascending: true)
+    
+    tableView.reloadData()
+    
+   }
 
-//    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         
- //       if searchBar.text?.count == 0 {
+        if searchBar.text?.count == 0 {
             
-//         loadItems()
+         loadItems()
             
-//            DispatchQueue.main.async {
+            DispatchQueue.main.async {
              
- //               searchBar.resignFirstResponder()
+               searchBar.resignFirstResponder()
                 
- //           }
+           }
             
             
             
- //       }
-//    }
+        }
+    }
     
     
-//}
-//
+}
+
 
 
 

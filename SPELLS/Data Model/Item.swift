@@ -15,6 +15,8 @@ class Item: Object {
     
    @objc dynamic var done: Bool = false
     
+    @objc dynamic var dateCreated: Date?
+
     var parentTopic = LinkingObjects(fromType: Topic.self, property: "items")
 
 }
