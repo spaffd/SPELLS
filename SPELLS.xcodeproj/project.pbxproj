@@ -15,6 +15,7 @@
 		610903E1216B92AD0045AB1F /* TopicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 610903E0216B92AD0045AB1F /* TopicViewController.swift */; };
 		6163DA7B216FAF0800B431E1 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163DA7A216FAF0800B431E1 /* Item.swift */; };
 		6163DA7D216FAF3200B431E1 /* Topic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6163DA7C216FAF3200B431E1 /* Topic.swift */; };
+		61A1071F2178EB95005FC21F /* SwipeTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 61A1071E2178EB95005FC21F /* SwipeTableViewController.swift */; };
 		AE9299AD39493E930F5D599C /* Pods_SPELLS.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */; };
 /* End PBXBuildFile section */
 
@@ -30,6 +31,7 @@
 		610903E0216B92AD0045AB1F /* TopicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopicViewController.swift; sourceTree = "<group>"; };
 		6163DA7A216FAF0800B431E1 /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		6163DA7C216FAF3200B431E1 /* Topic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Topic.swift; sourceTree = "<group>"; };
+		61A1071E2178EB95005FC21F /* SwipeTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwipeTableViewController.swift; sourceTree = "<group>"; };
 		A19BFCB823087274C389C859 /* Pods-SPELLS.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SPELLS.release.xcconfig"; path = "Pods/Target Support Files/Pods-SPELLS/Pods-SPELLS.release.xcconfig"; sourceTree = "<group>"; };
 		B31DD9AA967E355F86905B02 /* Pods_SPELLS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SPELLS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -100,6 +102,7 @@
 			children = (
 				610903E0216B92AD0045AB1F /* TopicViewController.swift */,
 				610602B92163DF82003DF4C4 /* SpellingItemsViewController.swift */,
+				61A1071E2178EB95005FC21F /* SwipeTableViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				6163DA7D216FAF3200B431E1 /* Topic.swift in Sources */,
 				610602BA2163DF82003DF4C4 /* SpellingItemsViewController.swift in Sources */,
 				610903E1216B92AD0045AB1F /* TopicViewController.swift in Sources */,
+				61A1071F2178EB95005FC21F /* SwipeTableViewController.swift in Sources */,
 				610602B82163DF81003DF4C4 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
