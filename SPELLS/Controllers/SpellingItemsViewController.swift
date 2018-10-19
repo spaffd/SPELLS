@@ -9,7 +9,7 @@
 import UIKit
 import RealmSwift
 
-class SpellingItemsViewController: UITableViewController {
+class SpellingItemsViewController: SwipeTableViewController {
 
     var spellingItems: Results<Item>?
     
@@ -43,7 +43,7 @@ class SpellingItemsViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+       let cell = super.tableView(tableView, cellForRowAt: indexPath)
         
         if let item = spellingItems?[indexPath.row] {
             
@@ -154,6 +154,27 @@ class SpellingItemsViewController: UITableViewController {
        tableView.reloadData()
   }
     
+    //MARK:- Delete Data From Swipe
+    
+    override func updateModel(at indexPath: IndexPath) {
+        
+        if let spellingItemForDeletion = self.spellingItems?[indexPath.row] {
+        
+        do {
+            
+            try self.realm.write {
+                
+                self.realm.delete(spellingItemForDeletion)
+                
+            }
+            
+        } catch {
+            
+            print("Error deleting spelling item \(error)")
+        }
+    }
+    
+    }
 }
 //MARK:- Search bar methods
 
