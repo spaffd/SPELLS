@@ -8,6 +8,8 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
+
 
 class TopicViewController: SwipeTableViewController {
     
@@ -20,6 +22,8 @@ class TopicViewController: SwipeTableViewController {
         super.viewDidLoad()
 
      loadTopics()
+        
+        tableView.separatorStyle = .none
         
     }
 
@@ -34,8 +38,10 @@ class TopicViewController: SwipeTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
        let cell = super.tableView(tableView, cellForRowAt: indexPath)
-        
-        cell.textLabel?.text = topics?[indexPath.row].name ?? "No Topics Added Yet"
+            
+            cell.textLabel?.text = topics?[indexPath.row].name ?? "No Topics Added Yet"
+            
+            cell.backgroundColor = UIColor(hexString: topics?[indexPath.row].colour ?? "FF3261")
         
         return cell
     
@@ -128,6 +134,8 @@ tableView.reloadData()
             let newTopic = Topic()
         
         newTopic.name = textField.text!
+            
+            newTopic.colour = UIColor.randomFlat.hexValue()
             
             self.save(topic: newTopic)
         

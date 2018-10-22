@@ -11,7 +11,9 @@ import RealmSwift
 
 class Topic: Object {
 
-@objc dynamic var name: String = ""
+    @objc dynamic var colour: String = ""
+    
+    @objc dynamic var name: String = ""
 
 let items = List<Item>()
 
