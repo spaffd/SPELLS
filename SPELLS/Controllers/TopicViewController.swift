@@ -37,13 +37,13 @@ class TopicViewController: SwipeTableViewController {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-       let cell = super.tableView(tableView, cellForRowAt: indexPath)
+      let cell = super.tableView(tableView, cellForRowAt: indexPath)
             
             cell.textLabel?.text = topics?[indexPath.row].name ?? "No Topics Added Yet"
             
             cell.backgroundColor = UIColor(hexString: topics?[indexPath.row].colour ?? "FF3261")
         
-        return cell
+       return cell
     
     }
     

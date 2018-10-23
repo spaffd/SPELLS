@@ -8,6 +8,7 @@
 
 import UIKit
 import RealmSwift
+import ChameleonFramework
 
 class SpellingItemsViewController: SwipeTableViewController {
 
@@ -30,7 +31,9 @@ class SpellingItemsViewController: SwipeTableViewController {
         super.viewDidLoad()
         
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-    
+        
+        tableView.separatorStyle = .none
+        
     }
 
     //MARK: - Tableview Datasource Methods
@@ -48,6 +51,18 @@ class SpellingItemsViewController: SwipeTableViewController {
         if let item = spellingItems?[indexPath.row] {
             
             cell.textLabel?.text = item.title
+            
+            if let colour = UIColor(hexString: selectedTopic!.colour)?.darken(byPercentage:CGFloat(indexPath.row) / CGFloat(spellingItems!.count)) {
+            
+             cell.backgroundColor = colour
+                
+                cell.textLabel?.textColor = ContrastColorOf(colour, returnFlat: true)
+                
+            }
+                
+                
+        
+    
             
             //set up Ternary operator to replace if and else
             
