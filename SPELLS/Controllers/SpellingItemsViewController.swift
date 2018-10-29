@@ -16,6 +16,8 @@ class SpellingItemsViewController: SwipeTableViewController {
     
     let realm = try! Realm()
     
+    @IBOutlet weak var searchBar: UISearchBar!
+    
     var selectedTopic : Topic? {
         
         didSet {
@@ -30,9 +32,46 @@ class SpellingItemsViewController: SwipeTableViewController {
         
         super.viewDidLoad()
         
-        print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
-        
         tableView.separatorStyle = .none
+       
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        
+         title = selectedTopic?.name
+        
+        guard let colourHex = selectedTopic?.colour else {fatalError() }
+        
+        updateNavBar(withHexCode: colourHex)
+        
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        updateNavBar(withHexCode: "FF3261")
+        
+         guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.") }
+        
+         navBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: FlatBlack()]
+        
+    }
+    
+    //MARK:- Nav Bar Setup Methods
+    
+    func updateNavBar(withHexCode colourHexCode: String) {
+        
+        guard let navBar = navigationController?.navigationBar else { fatalError("Navigation controller does not exist.") }
+
+        guard let navBarColor = UIColor(hexString: colourHexCode) else {fatalError() }
+        
+        navBar.barTintColor = navBarColor
+        
+        navBar.tintColor = ContrastColorOf(navBarColor, returnFlat: true)
+        
+        navBar.largeTitleTextAttributes = [NSAttributedStringKey.foregroundColor: ContrastColorOf(navBarColor, returnFlat: true)]
+        
+        searchBar.barTintColor = navBarColor
+        
         
     }
 

@@ -30,7 +30,7 @@ class TopicViewController: SwipeTableViewController {
     //MARK:- TableView Datasource Methods
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
+       
         return topics?.count ?? 1
         
     }
@@ -39,9 +39,21 @@ class TopicViewController: SwipeTableViewController {
         
       let cell = super.tableView(tableView, cellForRowAt: indexPath)
             
-            cell.textLabel?.text = topics?[indexPath.row].name ?? "No Topics Added Yet"
+        if let topic = topics?[indexPath.row] {
+        
+        //cell.textLabel?.text = topics?[indexPath.row].name ?? "No Topics Added Yet"
             
-            cell.backgroundColor = UIColor(hexString: topics?[indexPath.row].colour ?? "FF3261")
+            cell.textLabel?.text = topic.name
+            
+            guard let topicColour = UIColor(hexString: topic.colour) else {fatalError() }
+            
+           // cell.backgroundColor = UIColor(hexString: topics?[indexPath.row].colour ?? "FF3261")
+                
+                cell.backgroundColor = topicColour
+        
+            cell.textLabel?.textColor = ContrastColorOf(topicColour, returnFlat: true)
+        
+    }
         
        return cell
     
@@ -93,7 +105,7 @@ tableView.reloadData()
     
    topics = realm.objects(Topic.self)
     
-     tableView.reloadData()
+    tableView.reloadData()
         
    }
     
